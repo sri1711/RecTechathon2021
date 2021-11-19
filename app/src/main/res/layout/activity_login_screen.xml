@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    tools:context=".LoginScreen">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/cantora_one"
+        android:text="Welcome Back"
+        android:textColor="@color/black"
+        android:textSize="45sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:text="We are happy to have\n you back again!"
+        android:textColor="#6A6A6A"
+        android:textSize="22sp"
+        android:fontFamily="@font/cantora_one"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/et_background"
+        android:hint="User ID"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="18dp"
+        android:singleLine="true"
+        android:textColorHint="@color/hint_color"
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:passwordToggleEnabled="true"
+        android:layout_marginTop="20dp"
+        app:hintEnabled="false"
+        android:layout_marginHorizontal="20dp"
+        app:boxBackgroundMode="none"
+        >
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/et_background"
+        android:hint="Password"
+        android:paddingVertical="0dp"
+        android:singleLine="true"
+        android:textSize="18dp"
+        android:inputType="textPassword"
+        android:textColorHint="@color/hint_color"
+
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="75dp"
+        android:weightSum="2"
+        android:layout_gravity="center"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wanna create a new account?"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
+        android:textSize="15sp"
+        />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="308dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        app:backgroundTint="@color/btn_color"
+        android:fontFamily="@font/cantora_one"
+        android:textSize="18dp"
+        app:cornerRadius="12dp"
+        app:rippleColor="@color/hint_color"
+        />
+
+</LinearLayout>

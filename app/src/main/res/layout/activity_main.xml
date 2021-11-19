@@ -47,18 +47,18 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/get_started"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="40dp"
         android:layout_height="70dp"
-        android:gravity="center"
         android:layout_gravity="center"
-        android:text="Sign In"
-        android:textAllCaps="false"
-        app:backgroundTint="@color/btn_color"
+        android:layout_marginHorizontal="40dp"
         android:fontFamily="@font/cantora_one"
+        android:gravity="center"
+        android:text="Get Started"
+        android:textAllCaps="false"
         android:textSize="18dp"
+        app:backgroundTint="@color/btn_color"
         app:cornerRadius="12dp"
-        app:rippleColor="@color/hint_color"
-        />
+        app:rippleColor="@color/hint_color" />
 
 </LinearLayout>
