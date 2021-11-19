@@ -97,6 +97,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbtn_signIn"
         android:layout_width="308dp"
         android:layout_height="70dp"
         android:gravity="center"
