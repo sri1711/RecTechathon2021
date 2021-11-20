@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "557029382120",
+    "firebase_url": "https://techathon2021-ef8ff-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "techathon2021-ef8ff",
     "storage_bucket": "techathon2021-ef8ff.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "557029382120-a68q126ou8gr3crqtkkf2909828kt0kj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sparrow.techathon",
+            "certificate_hash": "81064be5801e4cec99ef3beab2bd8dadd83252bd"
+          }
+        },
         {
           "client_id": "557029382120-q4hq285l1h89fh8uud8ogirqcovpc874.apps.googleusercontent.com",
           "client_type": 3
