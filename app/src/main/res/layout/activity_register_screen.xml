@@ -46,6 +46,7 @@
 
 
     <EditText
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
@@ -91,6 +92,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
+        android:id="@+id/et_Mail"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
@@ -143,6 +145,7 @@
         app:boxBackgroundMode="none"
         >
         <EditText
+            android:id="@+id/et_pass"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/et_background"
@@ -165,6 +168,7 @@
         app:boxBackgroundMode="none"
         >
         <EditText
+            android:id="@+id/et_cpass"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/et_background"
