@@ -54,9 +54,6 @@ class LoginScreen : AppCompatActivity() {
         auth = Firebase.auth
 
 
-
-
-
     }
 
     private fun validateLogin(email: String, password: String){
