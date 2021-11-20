@@ -67,6 +67,7 @@ class LoginScreen : AppCompatActivity() {
         }
 
 
+<<<<<<< HEAD
     }
 
     private fun signIn() {
@@ -90,6 +91,8 @@ class LoginScreen : AppCompatActivity() {
                 Log.w(TAG, "Google sign in failed", e)
             }
         }
+=======
+>>>>>>> 7efc2b1c77ff7f070cb3c62ad08379ae79ee3cf7
     }
 
     private fun validateLogin(email: String, password: String){
