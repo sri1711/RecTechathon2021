@@ -136,11 +136,13 @@
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mt_pasLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:passwordToggleEnabled="true"
         android:layout_marginTop="20dp"
         app:hintEnabled="false"
+        app:boxStrokeErrorColor="#FF0000"
         android:layout_marginHorizontal="20dp"
         app:boxBackgroundMode="none"
         >
@@ -184,6 +186,7 @@
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signup"
         android:layout_width="308dp"
         android:layout_height="70dp"
         android:gravity="center"
