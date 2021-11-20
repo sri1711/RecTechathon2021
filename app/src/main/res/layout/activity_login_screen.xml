@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="bottom"
     android:background="@color/bg_color"
     tools:context=".LoginScreen">
+
 
     <TextView
         android:layout_width="match_parent"
@@ -29,12 +31,13 @@
         />
 
     <EditText
+        android:id="@+id/etUserId"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/et_background"
-        android:hint="User ID"
+        android:hint="Email ID"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textSize="18dp"
@@ -51,6 +54,7 @@
         app:boxBackgroundMode="none"
         >
     <EditText
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/et_background"
@@ -82,14 +86,17 @@
         android:layout_weight="1"
         android:textColor="@color/black"
         />
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:gravity="center"
         android:textStyle="bold"
+        android:textAllCaps="false"
         android:layout_weight="1"
         android:fontFamily="@font/roboto"
+        app:rippleColor="@color/hint_color"
         android:textColor="@color/black"
         android:layout_marginLeft="10dp"
         android:textSize="15sp"
@@ -110,5 +117,59 @@
         app:cornerRadius="12dp"
         app:rippleColor="@color/hint_color"
         />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/gradient_line"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/gradient_line2" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbtn_GsignIn"
+        android:layout_width="308dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        app:icon="@drawable/ic_svg_google__g__logo"
+        app:iconTintMode="multiply"
+        android:text="Sign In With Google"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        app:backgroundTint="#DBDBDB"
+        android:fontFamily="@font/cantora_one"
+        android:textSize="18dp"
+        app:cornerRadius="12dp"
+        app:rippleColor="@color/hint_color"
+        />
+
+
 
 </LinearLayout>
