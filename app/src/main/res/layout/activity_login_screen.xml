@@ -110,6 +110,7 @@
         android:layout_width="308dp"
         android:layout_height="70dp"
         android:gravity="center"
+        android:textColor="@color/white"
         android:layout_gravity="center"
         android:text="Sign In"
         android:textAllCaps="false"
@@ -162,6 +163,7 @@
         android:layout_gravity="center"
         app:icon="@drawable/ic_svg_google__g__logo"
         app:iconTintMode="multiply"
+
         android:text="Sign In With Google"
         android:textColor="@color/black"
         android:textAllCaps="false"

@@ -1,33 +1,44 @@
 package com.sparrow.techathon
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginScreen : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var user: FirebaseUser
     var googleSignInClient : GoogleSignInClient? = null
+    var RC_SIGN_IN = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
         val mbtn_signIn = findViewById<com.google.android.material.button.MaterialButton>(R.id.mbtn_signIn)
 
+        auth = Firebase.auth
+
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken("AIzaSyD5vVEV2BUQC_lRTSw666R6worzp-tA5PI")
             .requestEmail()
             .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
         mbtn_signIn.setOnClickListener {
@@ -51,12 +62,34 @@ class LoginScreen : AppCompatActivity() {
 
         }
 
-        auth = Firebase.auth
+        findViewById<Button>(R.id.mbtn_GsignIn).setOnClickListener {
+            signIn()
+        }
 
 
+    }
 
+    private fun signIn() {
+        val signInIntent = googleSignInClient!!.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e)
+            }
+        }
     }
 
     private fun validateLogin(email: String, password: String){
@@ -66,7 +99,7 @@ class LoginScreen : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(ContentValues.TAG, "signInWithEmail:success")
                    // mProgress!!.dismiss()
-                    val user = auth.currentUser
+                    user = auth.currentUser!!
                     val intent = Intent(this,dashboardActivity::class.java)
                     intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
@@ -85,6 +118,26 @@ class LoginScreen : AppCompatActivity() {
                         baseContext, "Authentication failed \n ${task.exception.toString().substring(task.exception.toString().indexOf(":")+2,task.exception.toString().length)}",
                         Toast.LENGTH_SHORT
                     ).show()
+                }
+            }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
+                    val user = auth.currentUser
+                    //updateUI(user)
+                    val intent = Intent(this,dashboardActivity::class.java)
+                    intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    //updateUI(null)
                 }
             }
     }
