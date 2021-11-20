@@ -11,7 +11,9 @@
         <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/drawable/gradient_line.xml" value="0.26614583333333336" />
         <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/drawable/gradient_line2.xml" value="0.26614583333333336" />
         <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/drawable/ic_svg_google__g__logo.xml" value="0.26614583333333336" />
-        <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/layout/activity_login_screen.xml" value="0.176" />
+        <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
+        <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
+        <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/layout/activity_login_screen.xml" value="0.264" />
       </map>
     </option>
   </component>

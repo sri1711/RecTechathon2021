@@ -10,20 +10,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TechAThon">
         <activity
+            android:name=".forgotPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterScreen"
+<<<<<<< Updated upstream
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+=======
+            android:exported="true"></activity>
+>>>>>>> Stashed changes
         <activity
             android:name=".dashboardActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
+<<<<<<< Updated upstream
 
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> Stashed changes
         </activity>
         <activity
             android:name=".LoginScreen"

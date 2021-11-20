@@ -22,4 +22,6 @@
     <color name="btn_color">#2969F3</color>
 
     <color name="text_color">#292929</color>
+    <color name="text_color_Btn">#FFFFFF</color>
+    <color name="text_color_subhead">#6A6A6A</color>
 </resources>

@@ -62,6 +62,11 @@ class LoginScreen : AppCompatActivity() {
 
         }
 
+        findViewById<Button>(R.id.btForgotPassword).setOnClickListener {
+            val intent = Intent(this, forgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
         findViewById<Button>(R.id.mbtn_GsignIn).setOnClickListener {
             signIn()
         }
