@@ -8,21 +8,10 @@
         <entry key="..\:/AndroidDevFiles/TechAThon/app/src/main/res/layout/activity_login_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidDevFiles/TechAThon/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/AndroidDevFiles/TechAThon/app/src/main/res/layout/item_layout_title.xml" value="0.136" />
-<<<<<<< Updated upstream
         <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/drawable/gradient_line.xml" value="0.26614583333333336" />
         <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/drawable/gradient_line2.xml" value="0.26614583333333336" />
         <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/drawable/ic_svg_google__g__logo.xml" value="0.26614583333333336" />
-        <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/layout/activity_login_screen.xml" value="0.4" />
-=======
-        <entry key="..\:/RecTechathon2021/app/src/main/res/drawable/et_background.xml" value="0.26614583333333336" />
-        <entry key="..\:/RecTechathon2021/app/src/main/res/font/cantora_one.xml" value="0.15729166666666666" />
-        <entry key="..\:/RecTechathon2021/app/src/main/res/font/roboto.xml" value="0.15729166666666666" />
-        <entry key="..\:/RecTechathon2021/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
-        <entry key="..\:/RecTechathon2021/app/src/main/res/layout/activity_login_screen.xml" value="0.264" />
-        <entry key="..\:/RecTechathon2021/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/RecTechathon2021/app/src/main/res/layout/activity_register_screen.xml" value="0.264" />
-        <entry key="..\:/RecTechathon2021/app/src/main/res/layout/dropdown_menu_popup_item.xml" value="0.25" />
->>>>>>> Stashed changes
+        <entry key="..\:/GithubRepository/RecTechathon2021/app/src/main/res/layout/activity_login_screen.xml" value="0.176" />
       </map>
     </option>
   </component>

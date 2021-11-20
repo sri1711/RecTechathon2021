@@ -34,7 +34,7 @@ class LoginScreen : AppCompatActivity() {
 
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("AIzaSyD5vVEV2BUQC_lRTSw666R6worzp-tA5PI")
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
@@ -67,7 +67,6 @@ class LoginScreen : AppCompatActivity() {
         }
 
 
-<<<<<<< HEAD
     }
 
     private fun signIn() {
@@ -91,8 +90,7 @@ class LoginScreen : AppCompatActivity() {
                 Log.w(TAG, "Google sign in failed", e)
             }
         }
-=======
->>>>>>> 7efc2b1c77ff7f070cb3c62ad08379ae79ee3cf7
+
     }
 
     private fun validateLogin(email: String, password: String){
@@ -133,7 +131,6 @@ class LoginScreen : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                    //updateUI(user)
                     val intent = Intent(this,dashboardActivity::class.java)
                     intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
