@@ -22,6 +22,14 @@ class LoginScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
         val mbtn_signIn = findViewById<com.google.android.material.button.MaterialButton>(R.id.mbtn_signIn)
+
+        val gso = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+
         mbtn_signIn.setOnClickListener {
             val email = findViewById<EditText>(R.id.etUserId)
             val password = findViewById<EditText>(R.id.etPassword)
@@ -59,6 +67,9 @@ class LoginScreen : AppCompatActivity() {
                     Log.d(ContentValues.TAG, "signInWithEmail:success")
                    // mProgress!!.dismiss()
                     val user = auth.currentUser
+                    val intent = Intent(this,dashboardActivity::class.java)
+                    intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
 //                    if(user!!.isEmailVerified) {
 //                        val intent = Intent(this,dashboardActivity::class.java)
 //                        intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -68,7 +79,6 @@ class LoginScreen : AppCompatActivity() {
 //                        Toast.makeText(this,"Email not Verified!!", Toast.LENGTH_SHORT).show()
 //                    }
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w(ContentValues.TAG, "signInWithEmail:failure", task.exception)
                     //mProgress!!.dismiss()
                     Toast.makeText(
@@ -84,7 +94,9 @@ class LoginScreen : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
-            //reload();
+//            val intent = Intent(this,dashboardActivity::class.java)
+//            intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(intent)
         }
     }
 }

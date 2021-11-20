@@ -39,6 +39,7 @@
         android:background="@drawable/et_background"
         android:hint="Email ID"
         android:paddingLeft="15dp"
+        android:textColor="@color/text_color"
         android:paddingRight="15dp"
         android:textSize="18dp"
         android:singleLine="true"
@@ -64,6 +65,7 @@
         android:textSize="18dp"
         android:inputType="textPassword"
         android:textColorHint="@color/hint_color"
+        android:textColor="@color/text_color"
 
         />
     </com.google.android.material.textfield.TextInputLayout>

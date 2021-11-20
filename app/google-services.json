@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557029382120",
+    "project_id": "techathon2021-ef8ff",
+    "storage_bucket": "techathon2021-ef8ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557029382120:android:2c30b863717d8ffde5765d",
+        "android_client_info": {
+          "package_name": "com.sparrow.techathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557029382120-q4hq285l1h89fh8uud8ogirqcovpc874.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5vVEV2BUQC_lRTSw666R6worzp-tA5PI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557029382120-q4hq285l1h89fh8uud8ogirqcovpc874.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
