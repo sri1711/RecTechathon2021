@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bg_color"
     tools:context=".RegisterScreen">
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/cantora_one"
         android:text="Let’s get Started"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color"
         android:textSize="45sp" />
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:text="Create your account and\n join the community!"
-        android:textColor="#6A6A6A"
+        android:textColor="@color/text_color_subhead"
         android:textSize="22sp"
         android:fontFamily="@font/cantora_one"
         />
@@ -56,6 +57,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textSize="18dp"
+        android:textColor="@color/text_color"
         android:singleLine="true"
         android:textColorHint="@color/hint_color"
         />
@@ -82,6 +84,7 @@
         <AutoCompleteTextView
             android:hint="Gender"
             android:textSize="18dp"
+            android:textColor="@color/text_color"
             android:shadowColor="@color/hint_color"
             android:id="@+id/filled_exposed_dropdown"
             android:layout_width="match_parent"
@@ -97,6 +100,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
+        android:textColor="@color/text_color"
         android:background="@drawable/et_background"
         android:hint="Email ID"
         android:paddingLeft="15dp"
@@ -130,6 +134,7 @@
             android:shadowColor="@color/hint_color"
             android:id="@+id/designation_exposed_dropdown"
             android:layout_width="match_parent"
+            android:textColor="@color/text_color"
             android:layout_height="60dp"
             android:paddingVertical="0dp"
             android:inputType="none"/>
@@ -155,6 +160,7 @@
             android:paddingVertical="0dp"
             android:singleLine="true"
             android:textSize="18dp"
+            android:textColor="@color/text_color"
             android:inputType="textPassword"
             android:textColorHint="@color/hint_color"
             />
@@ -174,6 +180,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/et_background"
+            android:textColor="@color/text_color"
             android:hint="Confirm password"
             android:paddingVertical="0dp"
             android:singleLine="true"
@@ -197,6 +204,7 @@
         app:backgroundTint="@color/btn_color"
         android:fontFamily="@font/cantora_one"
         android:textSize="18dp"
+        android:textColor="@color/text_color_Btn"
         app:cornerRadius="12dp"
         app:rippleColor="@color/hint_color"
         />
@@ -216,7 +224,7 @@
             android:fontFamily="@font/roboto"
             android:textSize="15sp"
             android:layout_weight="1"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             />
         <TextView
             android:layout_width="match_parent"
@@ -226,7 +234,7 @@
             android:textStyle="bold"
             android:layout_weight="1"
             android:fontFamily="@font/roboto"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:layout_marginLeft="10dp"
             android:textSize="15sp"
             />

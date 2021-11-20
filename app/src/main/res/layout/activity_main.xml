@@ -55,6 +55,7 @@
         android:fontFamily="@font/cantora_one"
         android:gravity="center"
         android:text="Get Started"
+        android:textColor="@color/text_color_Btn"
         android:textAllCaps="false"
         android:textSize="18dp"
         app:backgroundTint="@color/btn_color"

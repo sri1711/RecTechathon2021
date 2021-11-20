@@ -43,7 +43,7 @@ class forgotPasswordActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.tvreturn).setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,LoginScreen::class.java)
             startActivity(intent)
         }
     }

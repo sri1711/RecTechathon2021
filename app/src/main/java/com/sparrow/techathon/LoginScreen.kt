@@ -41,13 +41,15 @@ class LoginScreen : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
+
         mbtn_signIn.setOnClickListener {
             val email = findViewById<EditText>(R.id.etUserId)
             val password = findViewById<EditText>(R.id.etPassword)
+            val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]{2,4}+".toRegex()
             if (email.text.toString().isEmpty()){
                 email.setError("This field can not be blank")
             }
-            else if(!(email.text.contains("@")) && !(email.text.contains("."))){
+            else if(!email.text.toString().trim().matches(emailPattern)){
                 email.setError("Enter a proper mail Id")
             }
             else{
@@ -64,6 +66,11 @@ class LoginScreen : AppCompatActivity() {
 
         findViewById<Button>(R.id.btForgotPassword).setOnClickListener {
             val intent = Intent(this, forgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.btn_signup).setOnClickListener {
+            val intent = Intent(this, RegisterScreen::class.java)
             startActivity(intent)
         }
 
