@@ -113,9 +113,14 @@ class LoginScreen : AppCompatActivity() {
                     Log.d(ContentValues.TAG, "signInWithEmail:success")
                    // mProgress!!.dismiss()
                     user = auth.currentUser!!
-                    val intent = Intent(this,dashboardActivity::class.java)
-                    intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    startActivity(intent)
+                    if(user.isEmailVerified){
+                        val intent = Intent(this,dashboardActivity::class.java)
+                        intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this,"Verify your email sent to "+ user.email, Toast.LENGTH_SHORT).show()
+                    }
 //                    if(user!!.isEmailVerified) {
 //                        val intent = Intent(this,dashboardActivity::class.java)
 //                        intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -159,9 +164,9 @@ class LoginScreen : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
-//            val intent = Intent(this,dashboardActivity::class.java)
-//            intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent)
+            val intent = Intent(this,dashboardActivity::class.java)
+            intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
         }
     }
 }

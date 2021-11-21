@@ -1,6 +1,7 @@
 package com.sparrow.techathon
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -12,6 +13,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -116,6 +118,10 @@ class RegisterScreen : AppCompatActivity() {
         val passPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~\$^+=<>]).{8,20}\$".toRegex()
 
 
+        findViewById<Button>(R.id.btn_signIn).setOnClickListener {
+            val intent = Intent(this,LoginScreen::class.java)
+            startActivity(intent)
+        }
 
 
         findViewById<Button>(R.id.btn_signup).setOnClickListener {
@@ -123,16 +129,16 @@ class RegisterScreen : AppCompatActivity() {
                 || pass.text.isEmpty() ||cpass.text.isEmpty() || name.text.isEmpty() || mailID.text.isEmpty()){
                 Toast.makeText(this,"Please fill the details",Toast.LENGTH_SHORT).show()
             }
-            if(name.error!=null){
+            else if(name.error!=null){
                 Toast.makeText(this,"Please enter the valid name",Toast.LENGTH_SHORT).show()
             }
-            if(mailID.error!=null){
+            else if(mailID.error!=null){
                 Toast.makeText(this,"Please enter valid Email",Toast.LENGTH_SHORT).show()
             }
-            if(!(pass.text.toString().matches(passPattern))){
+            else if(!(pass.text.toString().matches(passPattern))){
                 Toast.makeText(this,"Password is weak :(",Toast.LENGTH_SHORT).show()
             }
-            if(cpass.text.toString() != pass.text.toString()){
+            else if(cpass.text.toString() != pass.text.toString()){
                 Toast.makeText(this,"Password doesn't match with confirm password",Toast.LENGTH_SHORT).show()
             }
             else{
@@ -151,11 +157,15 @@ class RegisterScreen : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
+                    sendEmailVerification(user!!)
                     userID = task.result?.user?.uid.toString()
                     referenceDatabase = rootNode!!.reference.child("users/${userID}")
                     referenceDatabase!!.child("Name").setValue(name)
                     referenceDatabase!!.child("Gender").setValue(gender)
                     referenceDatabase!!.child("Designation").setValue(role)
+                    val intent = Intent(this,LoginScreen::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -164,4 +174,20 @@ class RegisterScreen : AppCompatActivity() {
                 }
             }
     }
+    private fun sendEmailVerification(user: FirebaseUser){
+        user!!.sendEmailVerification()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this,"Verification mail sent to ${user!!.email}",Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "Email sent.")
+                }
+                else {
+                    Log.e(TAG, "sendEmailVerification", task.exception);
+                    Toast.makeText(this,
+                        "Failed to send verification email.",
+                        Toast.LENGTH_SHORT).show();
+                }
+            }
+    }
+
 }

@@ -44,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:gravity="center"
+                android:fontFamily="@font/cantora_one"
                 android:textColor="@color/caption_text_color"
                 android:text="Hello there!"
 
@@ -54,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="38sp"
                 android:gravity="center"
+                android:fontFamily="@font/cantora_one"
                 android:textColor="@color/title_text_color"
                 android:text="Sara Aditi"
                 />
@@ -92,7 +94,8 @@
                 android:paddingHorizontal="15dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="saraaditi.A88fE@asyncdevs.org"
+                android:textSize="16dp"
+                android:text="saraaditi.A8@asyncdevs.org"
                 android:textColor="@color/tile_text_color"
                 />
         </LinearLayout>
@@ -118,6 +121,7 @@
                 android:paddingHorizontal="15dp"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:textSize="16dp"
                 android:text="UI/UX Developer Grade S"
                 android:textColor="@color/tile_text_color"
                 />
@@ -147,13 +151,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="Dark Mode"
+                android:textSize="16dp"
                 android:textColor="@color/tile_text_color"
                 />
 
-            <ToggleButton
-                android:id="@+id/tbtn_displayMode"
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/toggleSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:thumb="@drawable/thumb_selector"
+                app:track="@drawable/track_selector"
+
                 />
 
         </LinearLayout>
