@@ -10,23 +10,48 @@
     android:orientation="vertical"
     >
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
     <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="30dp"
+        android:weightSum="5"
         >
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="4">
         <include
             layout="@layout/item_layout_title"
             />
+        </LinearLayout>
+
         <ImageButton
             android:id="@+id/ibtn_logout"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_logout"
-            />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="center|end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:rippleColor="@color/hint_color"
+            android:src="@drawable/ic_logout_black_24dp_1" />
+
 
     </LinearLayout>
 
@@ -178,6 +203,10 @@
         </LinearLayout>
 
     </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
 
 
 </LinearLayout>

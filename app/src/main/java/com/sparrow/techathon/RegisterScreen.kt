@@ -36,6 +36,8 @@ class RegisterScreen : AppCompatActivity() {
         val pass = findViewById<EditText>(R.id.et_pass)
         val cpass = findViewById<EditText>(R.id.et_cpass)
         // Initialize Firebase Auth
+
+
         auth = Firebase.auth
 
         val genderLayout = findViewById<TextInputLayout>(R.id.GenderLayout)

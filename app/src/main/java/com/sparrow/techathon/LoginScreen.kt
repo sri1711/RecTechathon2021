@@ -149,6 +149,7 @@ class LoginScreen : AppCompatActivity() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     val intent = Intent(this,dashboardActivity::class.java)
+                    intent.putExtra("SignIn","Google")
                     intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else {
