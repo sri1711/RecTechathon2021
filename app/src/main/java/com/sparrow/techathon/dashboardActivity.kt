@@ -57,10 +57,10 @@ class dashboardActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.ibtn_logout).setOnClickListener {
             Firebase.auth.signOut()
-            val editor = sharedpreferences!!.edit()
-            editor.clear().commit()
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             delegate.applyDayNight()
+            val editor = sharedpreferences!!.edit()
+            editor.clear().commit()
             val editor2 = sharedpreferencesswitch!!.edit()
             editor2.clear().commit()
             val intent = Intent(this,LoginScreen::class.java)

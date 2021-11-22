@@ -151,30 +151,42 @@ class RegisterScreen : AppCompatActivity() {
                 Toast.makeText(this,"Password doesn't match with confirm password",Toast.LENGTH_SHORT).show()
             }
             else{
-                performRegister(name.text.toString(),mailID.text.toString(),pass.text.toString(),role!!,gender!!)
-                Toast.makeText(this,"Registered Successfully",Toast.LENGTH_SHORT).show()
+                if(!SignInType.equals("Google")){
+                    performRegister(name.text.toString(),mailID.text.toString(),pass.text.toString(),role!!,gender!!)
+                }
+                else{
+                    addDetailsToDb(name.text.toString(),auth.currentUser!!.uid.toString(),mailID.text.toString())
+                    val intent = Intent(this,dashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
 
     }
 
-    private fun performRegister(name: String,email: String, password: String,role: String,gender: String) {
+    private fun addDetailsToDb(name:String,userID: String,email: String){
         rootNode = FirebaseDatabase.getInstance("https://techathon2021-ef8ff-default-rtdb.asia-southeast1.firebasedatabase.app")
+
+        referenceDatabase = rootNode!!.reference.child("users/${userID}")
+        referenceDatabase!!.child("Name").setValue(name)
+        referenceDatabase!!.child("Gender").setValue(gender)
+        referenceDatabase!!.child("Designation").setValue(role)
+        referenceDatabase!!.child("Email").setValue(email)
+    }
+
+    private fun performRegister(name: String,email: String, password: String,role: String,gender: String) {
+
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    val email = user!!.email
                     sendEmailVerification(user!!)
                     userID = task.result?.user?.uid.toString()
-                    referenceDatabase = rootNode!!.reference.child("users/${userID}")
-                    referenceDatabase!!.child("Name").setValue(name)
-                    referenceDatabase!!.child("Gender").setValue(gender)
-                    referenceDatabase!!.child("Designation").setValue(role)
-                    referenceDatabase!!.child("Email").setValue(email)
-
+                    val email = user!!.email
+                    addDetailsToDb(name,userID!!,email!!)
                     val intent = Intent(this,LoginScreen::class.java)
                     startActivity(intent)
                     finish()
