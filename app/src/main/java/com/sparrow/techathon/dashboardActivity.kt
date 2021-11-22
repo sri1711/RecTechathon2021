@@ -31,6 +31,9 @@ class dashboardActivity : AppCompatActivity() {
         switch!!.isChecked = sharedpreferencesswitch!!.getBoolean("Check",false).equals(true)
 
         if(!resources.configuration.isNightModeActive){
+            switch!!.isChecked = false
+        }
+        else{
             switch!!.isChecked = true
         }
 

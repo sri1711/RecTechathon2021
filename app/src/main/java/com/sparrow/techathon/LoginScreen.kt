@@ -40,8 +40,6 @@ class LoginScreen : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-
-
         mbtn_signIn.setOnClickListener {
             val email = findViewById<EditText>(R.id.etUserId)
             val password = findViewById<EditText>(R.id.etPassword)

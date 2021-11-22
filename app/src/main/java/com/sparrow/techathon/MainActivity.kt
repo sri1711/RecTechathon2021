@@ -31,9 +31,10 @@ class MainActivity : AppCompatActivity() {
 //            Configuration.UI_MODE_NIGHT_NO -> {} // Night mode is not active, we're using the light theme
 //            Configuration.UI_MODE_NIGHT_YES -> {} // Night mode is active, we're using dark theme
 //        }
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE)
         if(!resources.configuration.isNightModeActive){
-            sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            delegate.applyDayNight()
             if(sharedpreferences!!.getString("Mode","").equals("Night")){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 delegate.applyDayNight()
