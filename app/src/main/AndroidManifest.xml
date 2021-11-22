@@ -11,20 +11,17 @@
         android:theme="@style/Theme.TechAThon">
         <activity
             android:name=".forgotPasswordActivity"
-            android:exported="false"
-            android:configChanges="uiMode"/>
+            android:exported="false" />
         <activity
             android:name=".RegisterScreen"
-            android:exported="true"
-            android:configChanges="uiMode">
+            android:exported="true" >
         </activity>
         <activity
             android:name=".dashboardActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:configChanges="uiMode">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,8 +31,7 @@
 
         <activity
             android:name=".LoginScreen"
-            android:exported="true"
-            android:configChanges="uiMode">
+            android:exported="true">
         </activity>
 
         <meta-data

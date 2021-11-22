@@ -119,14 +119,7 @@ class LoginScreen : AppCompatActivity() {
                     else{
                         Toast.makeText(this,"Verify your email sent to "+ user.email, Toast.LENGTH_SHORT).show()
                     }
-//                    if(user!!.isEmailVerified) {
-//                        val intent = Intent(this,dashboardActivity::class.java)
-//                        intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//                        startActivity(intent)
-//                    }
-//                    else{
-//                        Toast.makeText(this,"Email not Verified!!", Toast.LENGTH_SHORT).show()
-//                    }
+
                 } else {
                     Log.w(ContentValues.TAG, "signInWithEmail:failure", task.exception)
                     //mProgress!!.dismiss()
@@ -143,10 +136,9 @@ class LoginScreen : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                    val intent = Intent(this,dashboardActivity::class.java)
+                    val intent = Intent(this,RegisterScreen::class.java)
                     intent.putExtra("SignIn","Google")
                     intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)

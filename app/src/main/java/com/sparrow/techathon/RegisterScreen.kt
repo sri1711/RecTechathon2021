@@ -11,6 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,6 +28,7 @@ class RegisterScreen : AppCompatActivity() {
     private var rootNode: FirebaseDatabase? = null
     private var referenceDatabase: DatabaseReference? = null
     private var userID: String? = null
+    private lateinit var SignInType : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +37,13 @@ class RegisterScreen : AppCompatActivity() {
         val mailID = findViewById<EditText>(R.id.et_Mail)
         val pass = findViewById<EditText>(R.id.et_pass)
         val cpass = findViewById<EditText>(R.id.et_cpass)
-        // Initialize Firebase Auth
+
+
+        SignInType = intent.getStringExtra("SignIn")!!
+        if(SignInType.equals("Google")){
+            setUpViewForGoogleSignIn()
+        }
+
 
 
         auth = Firebase.auth
@@ -127,8 +135,7 @@ class RegisterScreen : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.btn_signup).setOnClickListener {
-            if(designationTextFilledExposedDropdown.text.isEmpty() || editTextFilledExposedDropdown.text.isEmpty()
-                || pass.text.isEmpty() ||cpass.text.isEmpty() || name.text.isEmpty() || mailID.text.isEmpty()){
+            if((designationTextFilledExposedDropdown.text.isEmpty() || editTextFilledExposedDropdown.text.isEmpty() || name.text.isEmpty() || mailID.text.isEmpty() || pass.text.isEmpty() || cpass.text.isEmpty())  && !SignInType.equals("Google")){
                 Toast.makeText(this,"Please fill the details",Toast.LENGTH_SHORT).show()
             }
             else if(name.error!=null){
@@ -137,7 +144,7 @@ class RegisterScreen : AppCompatActivity() {
             else if(mailID.error!=null){
                 Toast.makeText(this,"Please enter valid Email",Toast.LENGTH_SHORT).show()
             }
-            else if(!(pass.text.toString().matches(passPattern))){
+            else if(!(pass.text.toString().matches(passPattern)) && !SignInType.equals("Google")){
                 Toast.makeText(this,"Password is weak :(",Toast.LENGTH_SHORT).show()
             }
             else if(cpass.text.toString() != pass.text.toString()){
@@ -159,12 +166,15 @@ class RegisterScreen : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
+                    val email = user!!.email
                     sendEmailVerification(user!!)
                     userID = task.result?.user?.uid.toString()
                     referenceDatabase = rootNode!!.reference.child("users/${userID}")
                     referenceDatabase!!.child("Name").setValue(name)
                     referenceDatabase!!.child("Gender").setValue(gender)
                     referenceDatabase!!.child("Designation").setValue(role)
+                    referenceDatabase!!.child("Email").setValue(email)
+
                     val intent = Intent(this,LoginScreen::class.java)
                     startActivity(intent)
                     finish()
@@ -176,6 +186,7 @@ class RegisterScreen : AppCompatActivity() {
                 }
             }
     }
+
     private fun sendEmailVerification(user: FirebaseUser){
         user!!.sendEmailVerification()
             .addOnCompleteListener { task ->
@@ -190,6 +201,26 @@ class RegisterScreen : AppCompatActivity() {
                         Toast.LENGTH_SHORT).show();
                 }
             }
+    }
+
+    private fun setUpViewForGoogleSignIn() {
+        val name = findViewById<EditText>(R.id.etName)
+        val mailID = findViewById<EditText>(R.id.et_Mail)
+        val pass = findViewById<TextInputLayout>(R.id.Pass_Textinput)
+        val cpass = findViewById<TextInputLayout>(R.id.cPass_Textinput)
+
+        val designationTextFilledExposedDropdown = findViewById<AutoCompleteTextView>(R.id.designation_exposed_dropdown)
+
+        val user = Firebase.auth.currentUser
+
+        val useName = user?.displayName
+        val userMail = user?.email
+
+        name.setText("$useName")
+        mailID.setText("$userMail")
+        pass.visibility = View.GONE
+        cpass.visibility = View.GONE
+
     }
 
 }

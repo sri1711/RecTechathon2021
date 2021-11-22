@@ -141,7 +141,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mt_pasLayout"
+        android:id="@+id/Pass_Textinput"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:passwordToggleEnabled="true"
@@ -167,6 +167,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cPass_Textinput"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:passwordToggleEnabled="true"
