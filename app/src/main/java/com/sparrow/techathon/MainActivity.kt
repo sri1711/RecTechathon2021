@@ -55,9 +55,10 @@ class MainActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
-            val intent = Intent(this,dashboardActivity::class.java)
-            intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent)
+//            val intent = Intent(this,dashboardActivity::class.java)
+//            intent.flags  = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(intent)
+//            finish()
         }
     }
 }

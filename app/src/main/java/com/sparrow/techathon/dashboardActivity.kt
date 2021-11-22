@@ -12,18 +12,22 @@ import java.security.AccessController.getContext
 
 class dashboardActivity : AppCompatActivity() {
     private var MyPREFERENCES = "MyPrefs"
+    private var SWITCHPREFERENCES = "switchPrefs"
     private var sharedpreferences : SharedPreferences?= null
+    private var sharedpreferencesswitch : SharedPreferences?= null
     private var switch:androidx.appcompat.widget.SwitchCompat? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         switch = findViewById(R.id.toggleSwitch)
+        sharedpreferencesswitch = getSharedPreferences(SWITCHPREFERENCES, MODE_PRIVATE)
+        switch!!.isChecked = sharedpreferencesswitch!!.getBoolean("Check",false).equals(true)
 
-        switch!!.isChecked = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            resources.configuration.isNightModeActive
-        } else {
-            false
-        }
+//        switch!!.isChecked = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            resources.configuration.isNightModeActive
+//        } else {
+//            false
+//        }
 //
 //        val nightModeFlags: Int = applicationContext.resources.configuration.uiMode and
 //                Configuration.UI_MODE_NIGHT_MASK
@@ -34,22 +38,29 @@ class dashboardActivity : AppCompatActivity() {
 //        }
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE)
+        sharedpreferencesswitch = getSharedPreferences(SWITCHPREFERENCES, MODE_PRIVATE)
         switch!!.setOnClickListener {
             if(switch!!.isChecked){
                 Toast.makeText(this,"Dark mode Activated", Toast.LENGTH_SHORT).show()
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 delegate.applyDayNight()
                 val editor = sharedpreferences!!.edit()
+                val switchEditor = sharedpreferencesswitch!!.edit()
                 editor.putString("Mode", "Night")
+                switchEditor.putBoolean("Check",true)
                 editor.commit()
+                switchEditor.commit()
             }
             else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 delegate.applyDayNight()
                 Toast.makeText(this,"Light mode Activated", Toast.LENGTH_SHORT).show()
                 val editor = sharedpreferences!!.edit()
+                val switchEditor = sharedpreferencesswitch!!.edit()
                 editor.putString("Mode", "Light")
+                switchEditor.putBoolean("Check",false)
                 editor.commit()
+                switchEditor.commit()
             }
         }
 
