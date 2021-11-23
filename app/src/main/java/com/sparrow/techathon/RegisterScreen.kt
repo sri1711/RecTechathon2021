@@ -28,7 +28,7 @@ class RegisterScreen : AppCompatActivity() {
     private var rootNode: FirebaseDatabase? = null
     private var referenceDatabase: DatabaseReference? = null
     private var userID: String? = null
-    private lateinit var SignInType : String
+    private var SignInType : String?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class RegisterScreen : AppCompatActivity() {
         val cpass = findViewById<EditText>(R.id.et_cpass)
 
 
-        SignInType = intent.getStringExtra("SignIn")!!
+        SignInType = intent.getStringExtra("SignIn")
         if(SignInType.equals("Google")){
             setUpViewForGoogleSignIn()
         }
